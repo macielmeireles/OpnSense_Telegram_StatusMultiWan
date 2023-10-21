@@ -1,0 +1,138 @@
+#!/usr/local/bin/php
+<?php
+
+/**
+ * Author: Maciel Meireles
+ * Date: 19/10/2023
+ * Version: 0.5 (beta)
+ * Description: Monitors gateway statuses (até 4) e gera um código de saída com base na combinação de status do gateway. Também fornece um resumo de todos os gateways no final.
+ * Créditos: Luciano Rodrigues (Curso Ninja pfSense).
+ */
+
+define("MAX_GATEWAYS", 4);
+define("EXIT_CODE_TOO_MANY_GATEWAYS", 99);
+define("SHOW_DETAILS", true);
+define("SEND_TELEGRAM", true);
+
+require_once('config.inc');
+require_once('interfaces.inc');
+require_once('util.inc');
+
+$gatewayStatuses = getGatewayStatuses();
+$statusNumeric = getStatusNumeric($gatewayStatuses);
+$statusBinary = getStatusBinary($gatewayStatuses);
+$statusExit = bindec($statusBinary);
+
+// Bloqueio do arquivo para leitura e gravação
+$lockFile = fopen(__DIR__ . '/last_status_exit.txt', 'c+');
+if (flock($lockFile, LOCK_EX)) {
+    $lastStatusExit = intval(fread($lockFile, 1024));
+
+    if ($lastStatusExit !== $statusExit || !file_exists(__DIR__ . '/last_status_exit.txt')) {
+        sendTelegram($statusNumeric, $statusBinary, $statusExit, $gatewayStatuses);
+        fseek($lockFile, 0);
+        fwrite($lockFile, $statusExit);
+    }
+
+    flock($lockFile, LOCK_UN);
+}
+
+fclose($lockFile);
+
+printStatusCodes($statusNumeric, $statusBinary, $statusExit, $gatewayStatuses);
+
+function getGatewayStatuses() {
+    $gatewayStatuses = return_gateways_status(true);
+
+    if (count($gatewayStatuses) > MAX_GATEWAYS) {
+        echo "Mais de " . MAX_GATEWAYS . " gateways não são suportados por este script.";
+        exit(EXIT_CODE_TOO_MANY_GATEWAYS);
+    }
+
+    return $gatewayStatuses;
+}
+
+function getStatusNumeric($gatewayStatuses) {
+    $statusNumeric = "";
+    foreach ($gatewayStatuses as $status) {
+        $statusNumeric .= getStatusNumber($status['status']);
+    }
+
+    return $statusNumeric;
+}
+
+function getStatusBinary($gatewayStatuses) {
+    $statusBinary = "";
+    foreach ($gatewayStatuses as $status) {
+        $statusBinary .= getStatusBinaryCode($status['status']);
+    }
+
+    return $statusBinary;
+}
+
+function getStatusNumber($status) {
+    $statusMapping = [
+        'none' => '0',
+        'loss' => '1',
+        'down' => '2',
+    ];
+
+    return $statusMapping[$status] ?? '3';
+}
+
+function getStatusBinaryCode($status) {
+    $statusMapping = [
+        'none' => '00',
+        'loss' => '01',
+        'down' => '10',
+    ];
+
+    return $statusMapping[$status] ?? '11';
+}
+
+function translateStatusNumeric($statusNumeric) {
+    $statusTranslation = [
+        '0' => 'online',
+        '1' => 'perda de pacotes',
+        '2' => 'offline',
+    ];
+
+    return $statusTranslation[$statusNumeric] ?? 'desconhecido';
+}
+
+function printStatusCodes($statusNumeric, $statusBinary, $statusExit, $gatewayStatuses) {
+    if (SHOW_DETAILS) {
+        foreach ($gatewayStatuses as $gateway => $details) {
+            echo "{$gateway}: " . translateStatusNumeric(getStatusNumber($details['status'])) . "\n";
+        }
+    }
+
+    echo "\n";
+
+    echo "Status de Saída: {$statusExit}\n";
+}
+
+function sendTelegram($statusNumeric, $statusBinary, $statusExit, $gatewayStatuses) {
+    // Cria uma mensagem com o status de cada gateway
+    $message = "Status do Gateway\n";
+
+    foreach ($gatewayStatuses as $gateway => $details) {
+        $message .= "{$gateway}: " . translateStatusNumeric(getStatusNumber($details['status'])) . "\n";
+    }
+
+    // Adiciona o status de saída à mensagem
+    $message .= "\n";
+
+    // Envia a mensagem usando o script do Telegram
+    shell_exec("/usr/local/opnsense/scripts/OPNsense/Monit/sendTelegram.sh \"$message\"");
+}
+
+function getLastStatusExit() {
+    if (file_exists(__DIR__ . '/last_status_exit.txt')) {
+        return file_get_contents(__DIR__ . '/last_status_exit.txt');
+    } else {
+        return null;
+    }
+}
+
+?>
