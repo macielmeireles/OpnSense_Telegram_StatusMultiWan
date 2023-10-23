@@ -1,23 +1,23 @@
-# OpnSense Multi-WAN Gateway Status
-########################################################################
-(En) OpnSense Multi-WAN Gateway Status
-########################################################################
+# OpnSense Multi-WAN Gateway Status <br />
+######################################################################## <br />
+(En) OpnSense Multi-WAN Gateway Status <br />
+######################################################################## <br />
 
-This script is a PHP-based gateway monitoring tool designed for use with the opnSense firewall. It monitors the status of multiple gateways and sends notifications via Telegram when the status changes. Here’s a brief overview of its functionality:
+This script is a PHP-based gateway monitoring tool designed for use with the opnSense firewall. It monitors the status of multiple gateways and sends notifications via Telegram when the status changes. Here’s a brief overview of its functionality: <br />
 
-Gateway Monitoring: The script monitors the status of each gateway and assigns a status code based on its current state. It supports up to four gateways.
+Gateway Monitoring: The script monitors the status of each gateway and assigns a status code based on its current state. It supports up to four gateways. <br />
 
-Status Tracking: The script tracks the status of each gateway and compares it with the previous state. If there’s a change in status, it triggers a notification.
+Status Tracking: The script tracks the status of each gateway and compares it with the previous state. If there’s a change in status, it triggers a notification. <br />
 
-Telegram Integration: The script integrates with Telegram via the sendTelegram.sh script. It sends a message to a specified Telegram group whenever there’s a change in gateway status.
+Telegram Integration: The script integrates with Telegram via the sendTelegram.sh script. It sends a message to a specified Telegram group whenever there’s a change in gateway status. <br />
 
-Customization: The script allows for customization such as setting the polling interval for monitoring, enabling email notifications, and more.
+Customization: The script allows for customization such as setting the polling interval for monitoring, enabling email notifications, and more. <br />
 
-Exit Status: The script provides an exit status that can be used by other programs or scripts to take further action based on the gateway statuses.
+Exit Status: The script provides an exit status that can be used by other programs or scripts to take further action based on the gateway statuses. <br />
 
-Please note that you need to manually set the bot token and group ID in the sendTelegram.sh file for the Telegram integration to work. You can obtain these from your Telegram bot and group settings respectively.
+Please note that you need to manually set the bot token and group ID in the sendTelegram.sh file for the Telegram integration to work. You can obtain these from your Telegram bot and group settings respectively. <br />
 
-For more details on how to get your bot token in Telegram or how to get your chat ID in Telegram, you can refer to these links.
+For more details on how to get your bot token in Telegram or how to get your chat ID in Telegram, you can refer to these links. <br />
 
 
 # Installation Guide (English)
@@ -60,20 +60,20 @@ For more details on how to get your bot token in Telegram⁴ or how to get your 
 (7) How to get Telegram bot API token | SiteGuarding. https://www.siteguarding.com/en/how-to-get-telegram-bot-api-token.
 (8) How to get a Telegram API token using the BotFather? - Zoho Corporation. https://help.zoho.com/portal/en/kb/desk/support-channels/instant-messaging/telegram/articles/telegram-integration-with-zoho-desk.
 (9) Get access token to connect Telegram bot - Bitrix24. https://helpdesk.bitrix24.com/open/17622486/.
-(10) How to Know Chat ID on Telegram on Android (with Pictures) - wikiHow. https://www.wikihow.com/Know-Chat-ID-on-Telegram-on-Android.
+(10) How to Know Chat ID on Telegram on Android (with Pictures) - wikiHow. https://www.wikihow.com/Know-Chat-ID-on-Telegram-on-Android.  <br />
 
 
-########################################################################
-(pt-BR) - Status de Gateway Multi-WAN do OpnSense
-########################################################################
+######################################################################## <br />
+(pt-BR) - Status de Gateway Multi-WAN do OpnSense <br />
+######################################################################## <br />
 
-O que faz: Este script monitora o status de gateways em um firewall OPNsense com múltiplas conexões WAN. Ele gera um código de saída com base na combinação de status do gateway. Também fornece um resumo de todos os gateways no final.
-Como funciona: O script usa a API do OPNsense para obter o status dos gateways. Ele então gera um código de saída com base na combinação de status do gateway. O código de saída é:
-0: todos os gateways estão online
-1: um ou mais gateways estão com perda de pacotes
-2: um ou mais gateways estão offline
-Saída: O script imprime o status de cada gateway, seguido pelo código de saída.
-Método de instalação será descrito em breve
+O que faz: Este script monitora o status de gateways em um firewall OPNsense com múltiplas conexões WAN. Ele gera um código de saída com base na combinação de status do gateway. Também fornece um resumo de todos os gateways no final. <br />
+Como funciona: O script usa a API do OPNsense para obter o status dos gateways. Ele então gera um código de saída com base na combinação de status do gateway. O código de saída é: <br />
+0: todos os gateways estão online <br />
+1: um ou mais gateways estão com perda de pacotes <br />
+2: um ou mais gateways estão offline <br />
+Saída: O script imprime o status de cada gateway, seguido pelo código de saída. <br />
+Método de instalação está escrito em ingles na parte superior. <br />
 
 O método de instalação do script será descrito em inglês na parte superior
 
