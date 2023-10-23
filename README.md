@@ -1,6 +1,6 @@
 # OpnSense Multi-WAN Gateway Status
 ########################################################################
-OpnSense Multi-WAN Gateway Status
+(En) OpnSense Multi-WAN Gateway Status
 ########################################################################
 
 What it does: This script monitors the status of gateways in an OPNsense firewall with multiple WAN connections. It generates an exit code based on the combination of gateway statuses. It also provides a summary of all gateways at the end.
@@ -14,7 +14,7 @@ Installation method will be described soon
 The installation method for the script will be described soon.
 
 ########################################################################
-Status de Gateway Multi-WAN do OpnSense
+(pt-BR) - Status de Gateway Multi-WAN do OpnSense
 ########################################################################
 
 O que faz: Este script monitora o status de gateways em um firewall OPNsense com múltiplas conexões WAN. Ele gera um código de saída com base na combinação de status do gateway. Também fornece um resumo de todos os gateways no final.
