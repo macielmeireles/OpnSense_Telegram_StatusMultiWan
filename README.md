@@ -76,3 +76,5 @@ Saída: O script imprime o status de cada gateway, seguido pelo código de saíd
 Método de instalação será descrito em breve
 
 O método de instalação do script será descrito em inglês na parte superior
+
+.
