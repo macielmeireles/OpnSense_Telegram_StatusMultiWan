@@ -61,7 +61,7 @@ For more details on how to get your bot token in Telegram⁴ or how to get your 
 (8) How to get a Telegram API token using the BotFather? - Zoho Corporation. https://help.zoho.com/portal/en/kb/desk/support-channels/instant-messaging/telegram/ articles/telegram-integration-with-zoho-desk <br />
 (9) Get access token to connect Telegram bot - Bitrix24. https://helpdesk.bitrix24.com/open/17622486/ <br />
 (10) How to Know Chat ID on Telegram on Android (with Pictures) - wikiHow. https://www.wikihow.com/Know-Chat-ID-on-Telegram-on-Android.  <br />
-
+  
 
 ######################################################################## <br />
 (pt-BR) - Status de Gateway Multi-WAN do OpnSense <br />
