@@ -75,6 +75,4 @@ Como funciona: O script usa a API do OPNsense para obter o status dos gateways. 
 Saída: O script imprime o status de cada gateway, seguido pelo código de saída. <br />
 Método de instalação está escrito em ingles na parte superior. <br />
 
-O método de instalação do script será descrito em inglês na parte superior
-
-.
+O método de instalação do script está descrito em inglês na parte superior
