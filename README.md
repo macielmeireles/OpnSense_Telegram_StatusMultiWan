@@ -51,15 +51,15 @@ For more details on how to get your bot token in Telegram or how to get your cha
 
 For more details on how to get your bot token in Telegram⁴ or how to get your chat ID in Telegram⁸, you can refer to these links.
 
-(1) How to Generate a Token for Telegram Bot API | Geek Culture - Medium. https://medium.com/geekculture/generate-telegram-token-for-bot-api-d26faf9bf064.
-(2) How to Find a Chat ID in Telegram - Alphr. https://www.alphr.com/find-chat-id-telegram/.
-(3) How to obtain Telegram chat_id for a specific user?. https://stackoverflow.com/questions/31078710/how-to-obtain-telegram-chat-id-for-a-specific-user.
-(4) How To Create Telegram Bot Step by Step | Part1:bot token. https://www.youtube.com/watch?v=aNmRNjME6mE.
-(5) How to get Telegram Bot Token. https://www.youtube.com/watch?v=MZixi8oIdaA.
-(6) Get Telegram bot token. https://www.youtube.com/watch?v=a5_KFJkor9U.
-(7) How to get Telegram bot API token | SiteGuarding. https://www.siteguarding.com/en/how-to-get-telegram-bot-api-token.
-(8) How to get a Telegram API token using the BotFather? - Zoho Corporation. https://help.zoho.com/portal/en/kb/desk/support-channels/instant-messaging/telegram/articles/telegram-integration-with-zoho-desk.
-(9) Get access token to connect Telegram bot - Bitrix24. https://helpdesk.bitrix24.com/open/17622486/.
+(1) How to Generate a Token for Telegram Bot API | Geek Culture - Medium. https://medium.com/geekculture/generate-telegram-token-for-bot-api-d26faf9bf064 <br />
+(2) How to Find a Chat ID in Telegram - Alphr. https://www.alphr.com/find-chat-id-telegram/ <br />
+(3) How to obtain Telegram chat_id for a specific user?. https://stackoverflow.com/questions/31078710/how-to-obtain-telegram-chat-id-for-a-specific-user <br />
+(4) How To Create Telegram Bot Step by Step | Part1:bot token. https://www.youtube.com/watch?v=aNmRNjME6mE <br />
+(5) How to get Telegram Bot Token. https://www.youtube.com/watch?v=MZixi8oIdaA <br />
+(6) Get Telegram bot token. https://www.youtube.com/watch?v=a5_KFJkor9U <br />
+(7) How to get Telegram bot API token | SiteGuarding. https://www.siteguarding.com/en/how-to-get-telegram-bot-api-token <br />
+(8) How to get a Telegram API token using the BotFather? - Zoho Corporation. https://help.zoho.com/portal/en/kb/desk/support-channels/instant-messaging/telegram/ articles/telegram-integration-with-zoho-desk <br />
+(9) Get access token to connect Telegram bot - Bitrix24. https://helpdesk.bitrix24.com/open/17622486/ <br />
 (10) How to Know Chat ID on Telegram on Android (with Pictures) - wikiHow. https://www.wikihow.com/Know-Chat-ID-on-Telegram-on-Android.  <br />
 
 
