@@ -1,13 +1,10 @@
 # Donation:
 
-    (En) | Support our project via Pix or PayPal:
-    Pix Brasileiro: d56da244-4dc5-4f77-be6d-28e94fdd46b2
-    PayPal: [Link](https://bit.ly/MonitTelegram)
+(En)      Support our project via Pix or PayPal. <br />
+(Pt-Br) Apoie nosso projeto via Pix ou PayPal: <br />
 
-    (Pt-Br) | Apoie nosso projeto via Pix ou PayPal:
-    Chave Pix: d56da244-4dc5-4f77-be6d-28e94fdd46b2
-    PayPal: [Link](https://bit.ly/MonitTelegram)
-
+(1) Brazilian Pix: d56da244-4dc5-4f77-be6d-28e94fdd46b2 <br />
+(2) Paypal:  https://bit.ly/MonitTelegram <br /><br />
 
 
 # OpnSense Multi-WAN Gateway Status <br />
