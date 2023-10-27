@@ -7,76 +7,164 @@
 (2) Paypal:  https://bit.ly/MonitTelegram <br /><br />
 
 
-# OpnSense Multi-WAN Gateway Status <br />
-######################################################################## <br />
-(En) OpnSense Multi-WAN Gateway Status <br />
-######################################################################## <br />
+# (En) OPNsense Multiwan Gateway Monitor & Alert Script via Telegram
 
-This script is a PHP-based gateway monitoring tool designed for use with the opnSense firewall. It monitors the status of multiple gateways and sends notifications via Telegram when the status changes. Here’s a brief overview of its functionality: <br />
+## Overview
+This project provides two scripts for monitoring the status of gateways in OPNsense and sending alerts to Telegram.
 
-Gateway Monitoring: The script monitors the status of each gateway and assigns a status code based on its current state. It supports up to four gateways. <br />
-
-Status Tracking: The script tracks the status of each gateway and compares it with the previous state. If there’s a change in status, it triggers a notification. <br />
-
-Telegram Integration: The script integrates with Telegram via the sendTelegram.sh script. It sends a message to a specified Telegram group whenever there’s a change in gateway status. <br />
-
-Customization: The script allows for customization such as setting the polling interval for monitoring, enabling email notifications, and more. <br />
-
-Exit Status: The script provides an exit status that can be used by other programs or scripts to take further action based on the gateway statuses. <br />
-
-Please note that you need to manually set the bot token and group ID in the sendTelegram.sh file for the Telegram integration to work. You can obtain these from your Telegram bot and group settings respectively. <br />
-
-For more details on how to get your bot token in Telegram or how to get your chat ID in Telegram, you can refer to these links. <br />
+The `gateway_multiwan` script monitors the `offline`, `packet loss`, `online`, or `unknown` status of all gateways found in opnSense. If any of them change, it sends an alert using the `sendTelegram.sh` file to a group, via a Telegram bot. If the SMTP alert is configured, it will also be sent to your email. For it to work, the script needs to be added to your opnSense and set up to be executed and triggered by events through the already included package called Monit.
 
 
-# Installation Guide (English)
+## Requirements
+- Download the two files from this GitHub repository (stable version) to your machine with OPNsense
+- OPNsense Firewall
+- Telegram Account
+- Shell Script
 
-**1. Download Files and Set Permissions:**
-- **1.1 Download Files:** Download the main files, `gateway_multiwan` and `sendTelegram.sh`, and save them in the default service Monit folder at `/usr/local/opnsense/scripts/OPNsense/Monit`.
-    - **a. gateway_multiwan:** This is a PHP code responsible for executing the monitoring.
-    - **b. sendTelegram.sh:** This is responsible for the script's communication with the API.
-- **1.2 Set Permissions:** After downloading, place the files in the Monit service folder with +x permission using the command `chmod +x gateway_multiwan sendTelegram.sh`.
 
-**2. Telegram Steps:**
-- **2.1 Create a Telegram Group:** Open the Telegram app and tap on the pencil icon to write a new message. Select "New Group" and choose the contacts you want to invite. Customize the group's name and photo, then tap "Create".
-- **2.2 Create a Telegram Bot:** Open a chat with "BotFather", the official Telegram bot. Type "/newbot" to start creating the bot. Choose a name for the bot and a username that ends with "bot", without spaces⁴.
-- **2.3 Add Bot to Group:** Go to the group and tap on the top bar to access options. Find and select "Add Members". Search for your bot in the contact list and add it to the group⁸.
-- **2.4 Add Yourself to Group:** Go to the group and tap on the top bar to access options. Find and select "Add Members". Search for your contact in the list and add it to the group.
+## Quick Installation Guide
+1. Download Files
+2. Set Permissions
+3. Configure Telegram
+4. Edit `sendTelegram.sh`
+5. Enable Monit Service
+6. Enable Script
 
-**3. Setup sendTelegram.sh file:**
-- **3.1 Configure Token and Group ID:** Open `sendTelegram.sh` in a text editor. Locate lines where token and group ID are set, usually identified by variables like `TOKEN` and `CHAT_ID`. Replace existing values with information you obtained from BotFather and your Telegram group⁹.
+## Detailed Installation Guide
 
-**4. Enable Monit Service (opnSense):**
-- **4.1 Enable Monit:** Access opnsense, go to Services, Monit, Services, and click on enable monit.
-- **4.2 Set Polling Interval:** Change the Polling Interval to a value you prefer for monitoring, I suggest 10 seconds (just type 10).
+**1. Download Files:**
+   1.1 Navigate to the Monit service folder:
+     ```
+     cd /usr/local/opnsense/scripts/OPNsense/Monit
+     ```
+   1.2 Use `fetch` to download `gateway_multiwan` and `sendTelegram.sh` from GitHub:
+     ```
+     fetch https://github.com/macielmeireles/opnsense_gateways_status/blob/main/versions/stable/0.6/gateway_multiwan && fetch https://github.com/macielmeireles/opnsense_gateways_status/blob/main/versions/stable/0.6/sendTelegram.sh
+     ```
 
-**5. Enable Script (no opnSense):**
-- **5.1 Duplicate Item:** Go to Service Settings, find and select the item gateway_alert, then click on the icon on its right side to duplicate it.
-- **5.2 Enable Service Checks:** Click on enable service checks.
-- **5.3 Set Name:** In the name field, type a name, for example: "gateway_multiwan".
-- **5.4 Set Path:** In the path field, replace "gateway_alert" with "gateway_multiwan", so it becomes: `/usr/local/opnsense/scripts/OPNsense/Monit/gateway_multiwan`.
-- **5.5 Set Tests:** In Tests field, uncheck "NonZeroStatus" and check "ChangedStatus".
-- **5.6 Save & Apply:** Save your changes and apply them.
+**2. Set Permissions:**
+   2.1 Set +x permission on the files:
+     ```
+     chmod +x gateway_multiwan sendTelegram.sh
+     ```
+
+**3. Telegram Configuration:**
+   3.1 Create a Telegram group.
+   3.2 Create a bot with "BotFather".
+   3.3 Note down the bot token.
+   3.4 Add the bot and yourself to the group.
+   3.5 Get the group ID from the URL.
+
+**4. Configure sendTelegram.sh:**
+   4.1 Open `sendTelegram.sh` in a text editor.
+   4.2 Update `TOKEN` and `CHAT_ID` with your bot token and group ID.
+
+**5. Enable Monit Service:**
+   5.1 In OPNsense, go to Services > Monit > Services and click on Enable Monit.
+   5.2 Set your preferred polling interval.
+
+**6. Enable Script:**
+   6.1 In OPNsense, go to Services > Monit > Services and click on Duplicate.
+   6.2 In the Duplicate Item dialog box, enter a name for the new service, such as "gateway_multiwan".
+   6.3 In the Path field, enter the path to the shell script, such as `/usr/local/opnsense/scripts/OPNsense/Monit/gateway_multiwan`.
+   6.4 In Tests field, uncheck "NonZeroStatus" and check "ChangedStatus".
+   6.5 Click Save and Apply.
+
+## Testing the Script
+To test the script, manually disable a WAN link in OPNsense. You should receive a Telegram alert.
+
 
 For more details on how to get your bot token in Telegram⁴ or how to get your chat ID in Telegram⁸, you can refer to these links.
 
-(1) How to Generate a Token for Telegram Bot API | Geek Culture - Medium. https://medium.com/geekculture/generate-telegram-token-for-bot-api-d26faf9bf064 <br />
-(2) How to Find a Chat ID in Telegram - Alphr. https://www.alphr.com/find-chat-id-telegram/ <br />
-(3) How to obtain Telegram chat_id for a specific user?. https://stackoverflow.com/questions/31078710/how-to-obtain-telegram-chat-id-for-a-specific-user <br />
-(4) How To Create Telegram Bot Step by Step | Part1:bot token. https://www.youtube.com/watch?v=aNmRNjME6mE <br />
-(5) How to get Telegram Bot Token. https://www.youtube.com/watch?v=MZixi8oIdaA <br />
-(6) Get Telegram bot token. https://www.youtube.com/watch?v=a5_KFJkor9U <br />
-(7) How to get Telegram bot API token | SiteGuarding. https://www.siteguarding.com/en/how-to-get-telegram-bot-api-token <br />
-(8) How to get a Telegram API token using the BotFather? - Zoho Corporation. https://help.zoho.com/portal/en/kb/desk/support-channels/instant-messaging/telegram/ articles/telegram-integration-with-zoho-desk <br />
-(9) Get access token to connect Telegram bot - Bitrix24. https://helpdesk.bitrix24.com/open/17622486/ <br />
-(10) How to Know Chat ID on Telegram on Android (with Pictures) - wikiHow. https://www.wikihow.com/Know-Chat-ID-on-Telegram-on-Android.  <br />
+<sub>(1) How to Generate a Token for Telegram Bot API | https://medium.com/geekculture/generate-telegram-token-for-bot-api-d26faf9bf064</sub> <br />
+<sub>(2) How to Find a Chat ID in Telegram | https://www.alphr.com/find-chat-id-telegram/ </sub> <br />
   
 
+
+##
+
+
+# (pt-br) Script de Monitoramento Multiwan Gateway no OPNsense e alerta via Telegram
+
+## Visão Geral
+Este projeto fornece dois arquivos para monitorar o status dos gateways no OPNsense e enviar alertas para o Telegram. 
+
+O script `gateway_multiwan` monitora os status `offline`, `perda de pacote`, `online` ou `desconhecido` de todos os gateways encontrados no opnSense. 
+Se algum deles mudar, ele envia um alerta usando o arquivo `sendTelegram.sh` para um grupo, via um bot do Telegram.
+Caso o alerta SMTP esteja configurado, também será enviado para seu e-mail.
+Para funcionar, o script precisa ser adicionado em seu opnSense e para ser executado e acionado por eventos através do pacote já incluído chamado Monit.
+
+## Requisitos
+- Firewall OPNsense
+- Conta do Telegram
+- Acesso ao Shell
+- Baixe os dois arquivos deste repositório do GitHub (versão `stable`) para sua máquina com OPNsense
+
+## Guia de Instalação Rápida
+1. Baixar Arquivos
+2. Definir Permissões
+3. Configurar Telegram
+4. Editar `sendTelegram.sh`
+5. Habilitar Serviço Monit
+6. Habilitar Script
+
+## Guia de Instalação Detalhada
+
+**1. Baixar Arquivos:**
+   1.1 Navegue até a pasta do serviço Monit:
+     ```
+     cd /usr/local/opnsense/scripts/OPNsense/Monit
+     ```
+   1.2 Use `fetch` para baixar `gateway_multiwan` e `sendTelegram.sh` do GitHub:
+     ```
+     fetch https://github.com/macielmeireles/opnsense_gateways_status/blob/main/versions/stable/0.6/gateway_multiwan && fetch https://github.com/macielmeireles/opnsense_gateways_status/blob/main/versions/stable/0.6/sendTelegram.sh
+     ```
+
+**2. Definir Permissões:**
+   2.1 Defina a permissão +x nos arquivos:
+     ```
+     chmod +x gateway_multiwan sendTelegram.sh
+     ```
+
+**3. Configuração do Telegram:**
+   3.1 Crie um grupo no Telegram.
+   3.2 Crie um bot com o "BotFather".
+   3.3 Anote o token do bot.
+   3.4 Adicione o bot e você mesmo ao grupo.
+   3.5 Obtenha o ID do grupo a partir da URL.
+
+**4. Configurar sendTelegram.sh:**
+   4.1 Abra `sendTelegram.sh` em um editor de texto.
+   4.2 Atualize `TOKEN` e `CHAT_ID` com o token do seu bot e ID do grupo.
+
+**5. Habilitar Serviço Monit:**
+   5.1 No OPNsense, vá para Serviços > Monit > Serviços e clique em Habilitar Monit.
+   5.2 Defina seu intervalo de sondagem preferido.
+
+**6. Habilitar Script:**
+   6.1 No OPNsense, vá para Serviços > Monit > Serviços e clique em Duplicar.
+   6.2 Na caixa de diálogo Item duplicado, insira um nome para o novo serviço, como "gateway_multiwan".
+   6.3 No campo Caminho, insira o caminho para o script shell, como `/usr/local/opnsense/scripts/OPNsense/Monit/gateway_multiwan`.
+   6.4 No campo Testes, desmarque "NonZeroStatus" e marque "ChangedStatus".
+   6.5 Clique em Salvar e Aplicar.
+
+## Testando o Script
+Para testar o script, desabilite manualmente um link WAN no OPNsense. Você deve receber um alerta no Telegram.
+
+
+
+
+
+
+
+
+< /br>< /br>< /br>< /br>
 ######################################################################## <br />
-(pt-BR) - Status de Gateway Multi-WAN do OpnSense <br />
+(pt-BR) - ANTIGA DESCRICAO - Status de Gateway Multi-WAN do OpnSense <br />
 ######################################################################## <br />
 
-O que faz: Este script monitora o status de gateways em um firewall OPNsense com múltiplas conexões WAN. Ele gera um código de saída com base na combinação de status do gateway. Também fornece um resumo de todos os gateways no final. <br />
+O que faz: Este script monitora o status de gateways em um firewall OPNsense com múltiplas conexões WAN. Voce pode notificar por e-mail configurrando o smtp ou o telegram através do sendTelegram.sh.<
+Ele gera um código de saída com base na combinação de status do gateway. Também fornece um resumo de todos os gateways no final. <br />
 Como funciona: O script usa a API do OPNsense para obter o status dos gateways. Ele então gera um código de saída com base na combinação de status do gateway. O código de saída é: <br />
 0: todos os gateways estão online <br />
 1: um ou mais gateways estão com perda de pacotes <br />
