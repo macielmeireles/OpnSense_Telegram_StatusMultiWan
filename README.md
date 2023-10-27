@@ -1,3 +1,15 @@
+# Donation:
+
+    (En) | Support our project via Pix or PayPal:
+    Pix Brasileiro: d56da244-4dc5-4f77-be6d-28e94fdd46b2
+    PayPal: Link
+
+    (Pt-Br) | Apoie nosso projeto via Pix ou PayPal:
+    Chave Pix: d56da244-4dc5-4f77-be6d-28e94fdd46b2
+    PayPal: Link
+
+
+
 # OpnSense Multi-WAN Gateway Status <br />
 ######################################################################## <br />
 (En) OpnSense Multi-WAN Gateway Status <br />
