@@ -32,12 +32,11 @@ The `gateway_multiwan` script monitors the `offline`, `packet loss`, `online`, o
 
 ## Detailed Installation Guide
 
-Inicia aqui:
-
-Detailed Installation Guide<br />
-1. Download Files on SSH Terminal:<br />
-   1.1 Navigate to the Monit service folder: `cd /usr/local/opnsense/scripts/OPNsense/Monit`<br />
-   1.2 Use fetch to download "gateway_multiwan" and "sendTelegram.sh' from GitHub:<br /> 
+1. Enable SSH on OpnSense and download the files<br />
+   1.1 Enable SSH on OpnSense: System > Settings > Administration <br />
+   1.2 Access OpnSense via SSH from terminal: ssh root@192.168.1.1. Replace root with your username and 192.168.1.1 with your OpnSense IP address.
+   1.3 Navigate to the Monit service folder: `cd /usr/local/opnsense/scripts/OPNsense/Monit`<br />
+   1.4 Use fetch to download "gateway_multiwan" and "sendTelegram.sh' from GitHub:<br /> 
       `fetch https://github.com/macielmeireles/opnsense_gateways_status/blob/main/versions/stable/0.6/gateway_multiwan && fetch https://github.com/macielmeireles/opnsense_gateways_status/blob/main/versions/stable/0.6/sendTelegram.sh`<br />
 
 2. Set Permissions:<br />
