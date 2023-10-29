@@ -32,49 +32,43 @@ The `gateway_multiwan` script monitors the `offline`, `packet loss`, `online`, o
 
 ## Detailed Installation Guide
 
-**1. Download Files:**
-   1.1 Navigate to the Monit service folder:
-     ```
-     cd /usr/local/opnsense/scripts/OPNsense/Monit
-     ```
-   1.2 Use `fetch` to download `gateway_multiwan` and `sendTelegram.sh` from GitHub:
-     ```
-     fetch https://github.com/macielmeireles/opnsense_gateways_status/blob/main/versions/stable/0.6/gateway_multiwan && fetch https://github.com/macielmeireles/opnsense_gateways_status/blob/main/versions/stable/0.6/sendTelegram.sh
-     ```
+Inicia aqui:
 
-**2. Set Permissions:**
-   2.1 Set +x permission on the files:
-     ```
-     chmod +x gateway_multiwan sendTelegram.sh
-     ```
+Detailed Installation Guide<br />
+1. Download Files on SSH Terminal:<br />
+   1.1 Navigate to the Monit service folder: `cd /usr/local/opnsense/scripts/OPNsense/Monit`<br />
+   1.2 Use fetch to download "gateway_multiwan" and "sendTelegram.sh' from GitHub:<br /> 
+      `fetch https://github.com/macielmeireles/opnsense_gateways_status/blob/main/versions/stable/0.6/gateway_multiwan && fetch https://github.com/macielmeireles/opnsense_gateways_status/blob/main/versions/stable/0.6/sendTelegram.sh`<br />
 
-**3. Telegram Configuration:**
-   3.1 Create a Telegram group.
-   3.2 Create a bot with "BotFather".
-   3.3 Note down the bot token.
-   3.4 Add the bot and yourself to the group.
-   3.5 Get the group ID from the URL.
+2. Set Permissions:<br />
+   2.1 Set +x permission on the files:<br /> `chmod +x gateway_multiwan sendTelegram.sh`<br />
 
-**4. Configure sendTelegram.sh:**
-   4.1 Open `sendTelegram.sh` in a text editor.
-   4.2 Update `TOKEN` and `CHAT_ID` with your bot token and group ID.
+3. Telegram Configuration:<br />
+   3.1 Create a Telegram group.<br />
+   3.2 Create a bot with "BotFather".<br />
+   3.3 Note down the bot token.<br />
+   3.4 Add the bot and yourself to the group.<br />
+   3.5 Get the group ID from the URL.<br />
 
-**5. Enable Monit Service:**
-   5.1 In OPNsense, go to Services > Monit > Services and click on Enable Monit.
-   5.2 Set your preferred polling interval.
+4. Configure sendTelegram.sh:<br />
+   4.1 Open sendTelegram.sh in a text editor.<br />
+   4.2 Update TOKEN and CHAT_ID with your bot token and group ID.<br />
 
-**6. Enable Script:**
-   6.1 In OPNsense, go to Services > Monit > Services and click on Duplicate.
-   6.2 In the Duplicate Item dialog box, enter a name for the new service, such as "gateway_multiwan".
-   6.3 In the Path field, enter the path to the shell script, such as `/usr/local/opnsense/scripts/OPNsense/Monit/gateway_multiwan`.
-   6.4 In Tests field, uncheck "NonZeroStatus" and check "ChangedStatus".
-   6.5 Click Save and Apply.
+5. Enable Monit Service:<br />
+   5.1 In OPNsense, go to Services > Monit > Services and click on Enable Monit.<br />
+   5.2 Set your preferred polling interval.<br />
 
-## Testing the Script
-To test the script, manually disable a WAN link in OPNsense. You should receive a Telegram alert.
+6. Enable Script:<br />
+   6.1 In OPNsense, go to Services > Monit > Services and click on Duplicate.<br />
+   6.2 In the Duplicate Item dialog box, enter a name for the new service, such as "gateway_multiwan".<br />
+   6.3 In the Path field, enter the path to the shell script, such as `/usr/local/opnsense/scripts/OPNsense/Monit/gateway_multiwan`.<br />
+   6.4 In Tests field, uncheck "NonZeroStatus" and check "ChangedStatus".<br />
+   6.5 Click Save and Apply.<br />
 
+Testing the Script<br />
+To test the script, manually disable a WAN link in OPNsense. You should receive a Telegram alert.<br />
 
-For more details on how to get your bot token in Telegram⁴ or how to get your chat ID in Telegram⁸, you can refer to these links.
+For more details on how to get your bot token in Telegram[^1^][2] or how to get your chat ID in Telegram, you can refer to these links.<br />
 
 <sub>(1) How to Generate a Token for Telegram Bot API | https://medium.com/geekculture/generate-telegram-token-for-bot-api-d26faf9bf064</sub> <br />
 <sub>(2) How to Find a Chat ID in Telegram | https://www.alphr.com/find-chat-id-telegram/ </sub> <br />
