@@ -3,8 +3,8 @@
 (En)      Support our project via Pix or PayPal. <br />
 (Pt-Br) Apoie nosso projeto via Pix ou PayPal: <br />
 
-(1) Brazilian Pix: d56da244-4dc5-4f77-be6d-28e94fdd46b2 <br />
-(2) Paypal:  https://bit.ly/MonitTelegram <br /><br />
+- Brazilian Pix: d56da244-4dc5-4f77-be6d-28e94fdd46b2 <br />
+- Paypal:  https://bit.ly/MonitTelegram <br /><br />
 
 
 # (En) OPNsense Multiwan Gateway Monitor & Alert Script via Telegram
