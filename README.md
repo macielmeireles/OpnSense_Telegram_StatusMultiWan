@@ -1,4 +1,4 @@
-# Donation:
+# Donation/Doação:
 
 (En)      Support our project via Pix or PayPal. <br />
 (Pt-Br) Apoie nosso projeto via Pix ou PayPal: <br />
