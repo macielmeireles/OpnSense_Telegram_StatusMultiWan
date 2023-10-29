@@ -58,7 +58,7 @@ The `gateway_multiwan` script monitors the `offline`, `packet loss`, `online`, o
    5.2 Set your preferred polling interval.<br />
 
 6. Enable Script:<br />
-   6.1 In OPNsense, go to Services > Monit > Services and click on Duplicate.<br />
+   6.1 OPNsense, go to Services > Monit > Services and duplicate the pre-existing service called gateway_alert.<br />
    6.2 In the Duplicate Item dialog box, enter a name for the new service, such as "gateway_multiwan".<br />
    6.3 In the Path field, enter the path to the shell script, such as `/usr/local/opnsense/scripts/OPNsense/Monit/gateway_multiwan`.<br />
    6.4 In Tests field, uncheck "NonZeroStatus" and check "ChangedStatus".<br />
