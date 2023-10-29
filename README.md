@@ -101,68 +101,40 @@ Para funcionar, o script precisa ser adicionado em seu opnSense e para ser execu
 5. Habilitar Serviço Monit
 6. Habilitar Script
 
-## Guia de Instalação Detalhada
+## **Guia Detalhado de Instalação**
 
-**1. Baixar Arquivos:**
-   1.1 Navegue até a pasta do serviço Monit:
-     ```
-     cd /usr/local/opnsense/scripts/OPNsense/Monit
-     ```
-   1.2 Use `fetch` para baixar `gateway_multiwan` e `sendTelegram.sh` do GitHub:
-     ```
-     fetch https://github.com/macielmeireles/opnsense_gateways_status/blob/main/versions/stable/0.6/gateway_multiwan && fetch https://github.com/macielmeireles/opnsense_gateways_status/blob/main/versions/stable/0.6/sendTelegram.sh
-     ```
+1. **Ative o SSH no OpnSense e baixe os arquivos**<br /> 
+   1.1 Ative o SSH no OpnSense: Sistema > Configurações > Administração<br /> 
+   1.2 Acesse o OpnSense via SSH a partir do terminal, exemplo: `ssh root@192.168.1.1` <br />
+   1.3 Navegue até a pasta do serviço Monit: `cd /usr/local/opnsense/scripts/OPNsense/Monit`<br />
+   1.4 Use fetch para baixar "gateway_multiwan" e "sendTelegram.sh' do GitHub:<br />
+          `fetch https://github.com/macielmeireles/opnsense_gateways_status/blob/main/versions/stable/0.6/gateway_multiwan && fetch https://github.com/macielmeireles/opnsense_gateways_status/blob/main/versions/stable/0.6/sendTelegram.sh`<br />
 
-**2. Definir Permissões:**
-   2.1 Defina a permissão +x nos arquivos:
-     ```
-     chmod +x gateway_multiwan sendTelegram.sh
-     ```
+2. **Defina as Permissões**<br />   
+   2.1 Defina a permissão +x nos arquivos:<br /> `chmod +x gateway_multiwan sendTelegram.sh`<br />
 
-**3. Configuração do Telegram:**
-   3.1 Crie um grupo no Telegram.
-   3.2 Crie um bot com o "BotFather".
-   3.3 Anote o token do bot.
-   3.4 Adicione o bot e você mesmo ao grupo.
-   3.5 Obtenha o ID do grupo a partir da URL.
+3. **Configuração do Telegram**<br />
+   3.1 Crie um grupo no Telegram.<br />
+   3.2 Crie um bot com o "BotFather".<br />
+   3.3 Anote o token do bot.<br />
+   3.4 Adicione o bot e você mesmo ao grupo.<br />
+   3.5 Obtenha o ID do grupo a partir da URL.<br />
 
-**4. Configurar sendTelegram.sh:**
-   4.1 Abra `sendTelegram.sh` em um editor de texto.
-   4.2 Atualize `TOKEN` e `CHAT_ID` com o token do seu bot e ID do grupo.
+4. **Configure o sendTelegram.sh**<br />
+   4.1 Abra o sendTelegram.sh em um editor de texto.<br />
+   4.2 Atualize TOKEN e CHAT_ID com o token do seu bot e o ID do grupo.<br />
 
-**5. Habilitar Serviço Monit:**
-   5.1 No OPNsense, vá para Serviços > Monit > Serviços e clique em Habilitar Monit.
-   5.2 Defina seu intervalo de sondagem preferido.
+5. **Ative o Serviço Monit**<br />
+   5.1 No OPNsense, vá para Serviços > Monit > Serviços e clique em Ativar Monit.<br />
+   5.2 Defina o intervalo de pesquisa de sua preferência.<br />
 
-**6. Habilitar Script:**
-   6.1 No OPNsense, vá para Serviços > Monit > Serviços e clique em Duplicar.
-   6.2 Na caixa de diálogo Item duplicado, insira um nome para o novo serviço, como "gateway_multiwan".
-   6.3 No campo Caminho, insira o caminho para o script shell, como `/usr/local/opnsense/scripts/OPNsense/Monit/gateway_multiwan`.
-   6.4 No campo Testes, desmarque "NonZeroStatus" e marque "ChangedStatus".
-   6.5 Clique em Salvar e Aplicar.
+6. **Ative o Script**<br />
+   6.1 No OPNsense, vá para Serviços > Monit > Serviços e duplique o serviço pré-existente chamado gateway_alert.<br />
+   6.2 Na caixa de diálogo Duplicar Item, insira um nome para o novo serviço, como "gateway_multiwan".<br />
+   6.3 No campo Caminho, insira o caminho para o script shell, como `/usr/local/opnsense/scripts/OPNsense/Monit/gateway_multiwan`.<br />
+   6.4 No campo Testes, desmarque "NonZeroStatus" e marque "ChangedStatus".<br />
+   6.5 Clique em Salvar e Aplicar.<br />
 
-## Testando o Script
-Para testar o script, desabilite manualmente um link WAN no OPNsense. Você deve receber um alerta no Telegram.
-
-
-
-
-
-
-
-
-< /br>< /br>< /br>< /br>
-######################################################################## <br />
-(pt-BR) - ANTIGA DESCRICAO - Status de Gateway Multi-WAN do OpnSense <br />
-######################################################################## <br />
-
-O que faz: Este script monitora o status de gateways em um firewall OPNsense com múltiplas conexões WAN. Voce pode notificar por e-mail configurrando o smtp ou o telegram através do sendTelegram.sh.<
-Ele gera um código de saída com base na combinação de status do gateway. Também fornece um resumo de todos os gateways no final. <br />
-Como funciona: O script usa a API do OPNsense para obter o status dos gateways. Ele então gera um código de saída com base na combinação de status do gateway. O código de saída é: <br />
-0: todos os gateways estão online <br />
-1: um ou mais gateways estão com perda de pacotes <br />
-2: um ou mais gateways estão offline <br />
-Saída: O script imprime o status de cada gateway, seguido pelo código de saída. <br />
-Método de instalação está escrito em ingles na parte superior. <br />
-
-O método de instalação do script está descrito em inglês na parte superior
+**Testando o Script**<br />
+Para testar o script, desative manualmente um link WAN no OPnSense.<br />
+Você deve receber um alerta no Telegram.<br />
