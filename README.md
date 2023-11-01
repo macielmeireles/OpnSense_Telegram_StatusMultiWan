@@ -6,6 +6,9 @@
 - Brazilian Pix: d56da244-4dc5-4f77-be6d-28e94fdd46b2 <br />
 - Paypal:  https://bit.ly/MonitTelegram <br /><br />
 
+## Screenshot
+![Screenshot](https://github.com/macielmeireles/OpnSense-MultiWan-Telegram/blob/main/screenshot.jpg)
+
 
 # (En) OPNsense Multiwan Gateway Monitor & Alert Script via Telegram
 
