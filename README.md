@@ -1,4 +1,11 @@
-# Donation | Doações
+
+# OpnSense-MultiWan-Telegram
+
+- Script for OPNsense: monitors multi-WAN gateway status and sends notifications via Telegram (or email with Monit service)
+
+
+
+## Donation | Doações
 
 (En)      Support our project via Pix or PayPal. <br />
 (Pt-Br) Apoie nosso projeto via Pix ou PayPal: <br />
