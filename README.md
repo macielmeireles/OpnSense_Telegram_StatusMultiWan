@@ -17,28 +17,29 @@
 ![Screenshot](https://github.com/macielmeireles/OpnSense-MultiWan-Telegram/blob/main/screenshot.jpg)
 
 
-# (En) OPNsense Multiwan Gateway Monitor & Alert Script via Telegram
-
-## Overview
+## Overview (En)
 This project provides two scripts for monitoring the status of gateways in OPNsense and sending alerts to Telegram.
 
 The `gateway_multiwan` script monitors the `offline`, `packet loss`, `online`, or `unknown` status of all gateways found in opnSense. If any of them change, it sends an alert using the `sendTelegram.sh` file to a group, via a Telegram bot. If the SMTP alert is configured, it will also be sent to your email. For it to work, the script needs to be added to your opnSense and set up to be executed and triggered by events through the already included package called Monit.
 
 
 ## Requirements
-- Download the two files from this GitHub repository (stable version) to your machine with OPNsense
 - OPNsense Firewall
+- SSH terminal
+- Download the two files from this GitHub repository (stable version) to your machine with OPNsense
 - Telegram Account
-- Shell Script
+
 
 
 ## Quick Installation Guide
-1. Download Files
-2. Set Permissions
-3. Configure Telegram
-4. Edit `sendTelegram.sh`
-5. Enable Monit Service
-6. Enable Script
+1. Enable SSH on OpnSense
+2. Download Files
+3. Set Permissions
+4. Configure Telegram
+5. Edit `sendTelegram.sh`
+6. Enable Monit Service
+7. Enable Script
+8. Test
 
 ## Detailed Installation Guide
 
