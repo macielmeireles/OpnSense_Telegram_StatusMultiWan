@@ -42,13 +42,13 @@ The `gateway_multiwan` script monitors the `offline`, `packet loss`, `online`, o
 8. Test
 
 ## Detailed Installation Guide
-https://raw.githubusercontent.com/macielmeireles/OpnSense-MultiWan-Telegram/main/versions/stable/0.6/gateway_multiwan
+https://raw.githubusercontent.com/macielmeireles/OpnSense-MultiWan-Telegram/main/versions/stable/0.7/gateway_multiwan
 1. Enable SSH on OpnSense and download the files<br />
    1.1 Enable SSH on OpnSense: System > Settings > Administration <br />
    1.2 Access OpnSense via SSH from terminal: ssh root@192.168.1.1. Replace root with your username and 192.168.1.1 with your OpnSense IP address.<br />
    1.3 Navigate to the Monit service folder: `cd /usr/local/opnsense/scripts/OPNsense/Monit`<br />
    1.4 Use fetch to download "gateway_multiwan" and "sendTelegram.sh' from GitHub:<br /> 
-      `fetch https://raw.githubusercontent.com/macielmeireles/OpnSense-MultiWan-Telegram/main/versions/stable/0.6/gateway_multiwan && fetch https://raw.githubusercontent.com/macielmeireles/OpnSense-MultiWan-Telegram/main/versions/stable/0.6/sendTelegram.sh`<br />
+      `fetch https://raw.githubusercontent.com/macielmeireles/OpnSense-MultiWan-Telegram/main/versions/stable/0.7/gateway_multiwan && fetch https://raw.githubusercontent.com/macielmeireles/OpnSense-MultiWan-Telegram/main/versions/stable/0.7/sendTelegram.sh`<br />
 
 2. Set Permissions:<br />
    2.1 Set +x permission on the files:<br /> `chmod +x gateway_multiwan sendTelegram.sh`<br />
@@ -119,7 +119,7 @@ Para funcionar, o script precisa ser adicionado em seu opnSense e para ser execu
    1.2 Acesse o OpnSense via SSH a partir do terminal, exemplo: `ssh root@192.168.1.1` <br />
    1.3 Navegue até a pasta do serviço Monit: `cd /usr/local/opnsense/scripts/OPNsense/Monit`<br />
    1.4 Use fetch para baixar "gateway_multiwan" e "sendTelegram.sh' do GitHub:<br />
-          `fetch https://github.com/macielmeireles/opnsense_gateways_status/blob/main/versions/stable/0.6/gateway_multiwan && fetch https://github.com/macielmeireles/opnsense_gateways_status/blob/main/versions/stable/0.6/sendTelegram.sh`<br />
+          `fetch https://github.com/macielmeireles/opnsense_gateways_status/blob/main/versions/stable/0.7/gateway_multiwan && fetch https://github.com/macielmeireles/opnsense_gateways_status/blob/main/versions/stable/0.7/sendTelegram.sh`<br />
 
 2. **Defina as Permissões**<br />   
    2.1 Defina a permissão +x nos arquivos:<br /> `chmod +x gateway_multiwan sendTelegram.sh`<br />
